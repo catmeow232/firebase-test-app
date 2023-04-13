@@ -1,6 +1,6 @@
 {
-  "name": "1",
-  "productName": "1",
+  "name": "firebase test app",
+  "productName": "firebase test app",
   "description": "My Electron application description",
   "keywords": [],
   "main": "./main.js",
