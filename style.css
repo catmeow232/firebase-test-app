@@ -1,3 +1,7 @@
+body {
+  font-family: 'Arial Bold', sans-serif;
+}
+
 .sign-in-button {
   background-color: blue;
   color: white;
@@ -6,4 +10,6 @@
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
+  font-family: 'Arial Bold', sans-serif;
+  font-weight: bold;
 }

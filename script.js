@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { auth } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 const { ipcRenderer } = require('electron');
 
 // Your web app's Firebase configuration
@@ -14,17 +14,24 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const auth = getAuth();
 
 // Renderer process tasks
 window.addEventListener('DOMContentLoaded', () => {
   const loginButton = document.getElementById('login-button');
   loginButton.addEventListener('click', () => {
-    auth().signInWithEmailAndPassword('user@example.com', 'password')
-      .then((userCredential) => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((result) => {
         // Handle successful login
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        const user = result.user;
+        console.log(user);
       })
       .catch((error) => {
         // Handle login error
+        console.log(error);
       });
   });
 });
