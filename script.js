@@ -1,7 +1,6 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { auth } from "firebase/auth";
+const { ipcRenderer } = require('electron');
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -16,12 +15,11 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-
 // Renderer process tasks
 window.addEventListener('DOMContentLoaded', () => {
   const loginButton = document.getElementById('login-button');
   loginButton.addEventListener('click', () => {
-    firebase.auth().signInWithEmailAndPassword('user@example.com', 'password')
+    auth().signInWithEmailAndPassword('user@example.com', 'password')
       .then((userCredential) => {
         // Handle successful login
       })
@@ -37,4 +35,3 @@ ipcRenderer.on('message-from-main', (event, arg) => {
 });
 
 ipcRenderer.send('message-to-main', 'Hello from renderer process!');
-  
