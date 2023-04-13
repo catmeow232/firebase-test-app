@@ -28,10 +28,12 @@ window.addEventListener('DOMContentLoaded', () => {
         const token = credential.accessToken;
         const user = result.user;
         console.log(user);
+        alert('Login successful!');
       })
       .catch((error) => {
         // Handle login error
         console.log(error);
+        alert('Error: ' + error.message);
       });
   });
 });
